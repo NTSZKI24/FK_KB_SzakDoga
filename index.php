@@ -1,4 +1,3 @@
-
 <html lang="hu">
 
 <head>
@@ -17,17 +16,91 @@
       <a href="event.php">Esemeny letrehozas</a>
       <a href="login.php">login</a>
       <a href="reg.php">reg</a>
-    </nav> 
+    </nav>
   </header>
-  <br><br><br><br><br><br>
-  <div class="container"></div>
-    <div class="row ">
-      <div class="col-4 keret">
+  <br><br><br><br>
+  <div class="row">
+    <div class="col-lg-4">
+  <div class="flex-container">
+    <div class="flex-box">
+      <h2>Esemeny neve</h2>
+      <img src="./img/theprint1-1024x682.jpg" alt="">
+      <h5>Helyszin: </h5>
+      <h5>Idopont: </h5>
+      <h5>Korhatar: </h5>
+      <h5>Tipus: </h5>
+      <a href="asd.php" class="indexbtn">Tovabbiak</a>
+    </div>
+  </div>
+</div>
+<div class="col-lg-4">
+  <div class="flex-container">
+    <div class="flex-box">
+      <h2>Esemeny neve</h2>
+      <img src="./img/theprint1-1024x682.jpg" alt="">
+      <h5>Helyszin: </h5>
+      <h5>Idopont: </h5>
+      <h5>Korhatar: </h5>
+      <h5>Tipus: </h5>
+      <a href="asd.php" class="indexbtn">Tovabbiak</a>
+    </div>
+  </div>
+</div>
+<div class="col-lg-4">
+  <div class="flex-container">
+    <div class="flex-box">
+      <h2>Esemeny neve</h2>
+      <img src="./img/theprint1-1024x682.jpg" alt="">
+      <h5>Helyszin: </h5>
+      <h5>Idopont: </h5>
+      <h5>Korhatar: </h5>
+      <h5>Tipus: </h5>
+      <a href="asd.php" class="indexbtn">Tovabbiak</a>
+    </div>
+  </div>
+</div>
+  </div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="flex-container">
+      <div class="flex-box">
+        <h2>Esemeny neve</h2>
         <img src="./img/theprint1-1024x682.jpg" alt="">
-        <h4 class="info">ESEMENY NEVE</h4>
-        <h5 class="info">HELYSZINE</h5>
+        <h5>Helyszin: </h5>
+        <h5>Idopont: </h5>
+        <h5>Korhatar: </h5>
+        <h5>Tipus: </h5>
+        <a href="asd.php" class="indexbtn">Tovabbiak</a>
       </div>
     </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="flex-container">
+      <div class="flex-box">
+        <h2>Esemeny neve</h2>
+        <img src="./img/theprint1-1024x682.jpg" alt="">
+        <h5>Helyszin: </h5>
+        <h5>Idopont: </h5>
+        <h5>Korhatar: </h5>
+        <h5>Tipus: </h5>
+        <a href="asd.php" class="indexbtn">Tovabbiak</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="flex-container">
+      <div class="flex-box">
+        <h2>Esemeny neve</h2>
+        <img src="./img/theprint1-1024x682.jpg" alt="">
+        <h5>Helyszin: </h5>
+        <h5>Idopont: </h5>
+        <h5>Korhatar: </h5>
+        <h5>Tipus: </h5>
+        <a href="asd.php" class="indexbtn">Tovabbiak</a>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>

@@ -10,8 +10,60 @@
 body{
     min-height: 100vh;
     background-image: url("./img/pexels-felixmittermeier-956999.jpg");
-    background-size: cover;
+    background-size:cover;
     background-position: center;
+    overflow-x: hidden;
+}
+.flex-container{
+    width: 100% !important;
+    height: auto;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.flex-box{
+    width: 450px !important;
+    height: 600px;
+    background:linear-gradient(rgb(0, 9, 128),red); 
+    color: white;
+    font-size: 25px;
+    line-height: 70px;
+    border-radius: 20px;
+    margin: 10px;
+}
+.indexbtn{
+    font-size: 18px;
+    font-weight: bold;
+    background: #1E90FF;
+    width: 160px;
+    margin-left: 155px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFF;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+.indexbtn:hover,.indexbtn:focus, .indexbtn:active{
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+h2,h5{
+    padding-left:48px;
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    width: 350px;   
 }
 .header{
     position: fixed;
@@ -51,41 +103,6 @@ body{
 }
 .navbar a:hover::before{
     width: 100%;
-}
-.container{
-    max-width: 720px;
-    margin-left: 25px;
-    padding-left: 25px;
-    padding-right: 25px;
-}
-.col-4{
-    text-align: center;
-    flex-basis: 25%;
-    padding: 10px;
-    min-width: 200px;
-    margin-bottom: 50px;
-    color: white;
-}
-.col-4 img{
-    width: 75%;
-    padding: 25px;
-}
-.keret{
-    border: 10px solid rgb(159,207,230);
-    background:red;
-    border-radius: 25px;
-    padding-left: 100px;
-    width:fit-content;
-}
-.info{
-    padding-left: 75px;
-}
-
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 90vh;
 }
 .box{
     background: #fdfdfd;
