@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('eventdesc')->nullable(true);
             $table->date('eventdate');
             $table->time('eventtime');
+            $table->integer('eventage')->nullable(true);
             $table->timestamps();
         });
     }
