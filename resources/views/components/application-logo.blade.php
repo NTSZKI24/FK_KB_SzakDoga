@@ -1,1 +1,0 @@
-<img src="{{"logo/73af8464-7a1e-4e47-9920-a12f62584b6c_removalai_preview.png"}}" height="50%" width="50%">
