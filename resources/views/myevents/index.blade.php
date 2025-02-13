@@ -13,7 +13,6 @@
                         
                     
                     <h4>{{$data->eventname}}</h4>
-                    <p>Szerkesztes</p>
                 </div>
             @endforeach
             </div>

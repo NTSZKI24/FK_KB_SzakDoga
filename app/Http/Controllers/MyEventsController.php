@@ -17,4 +17,12 @@ class MyEventsController extends Controller
         $events = Event::all();
         return view('myevents.index',compact('data'));
     }
+    public function delete($id)
+    {
+        $event = Event::find($id);
+
+        $event->delete();
+
+        return redirect()->back();
+    }
 }

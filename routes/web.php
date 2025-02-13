@@ -23,6 +23,7 @@ Route::get('/events/create',[EventController::class,'create'])->name('events.cre
 Route::post('/events',[EventController::class,'store'])->name('events.store');
 
 Route::get('/myevents', [MyEventsController::class,'index'])->name('myevents.index')->middleware('auth');
+Route::delete('myevents/delete/{id}', [MyEventsController::class,'delete'])->name('myevents.delete');
 
 
 require __DIR__.'/auth.php';
