@@ -8,13 +8,15 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-            @foreach($data as $data)
+                @foreach($events as $event)
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                        
-                    
-                    <h4>{{$data->eventname}}</h4>
+                    <h4>{{$event->eventname}}</h4>
+                    <form action="{{route('event-delete',$event->id)}}" method="POST">
+                        @csrf
+                        <button type="submit">delete</button>
+                    </form>
                 </div>
-            @endforeach
+                @endforeach
             </div>
         </div>
     </div>

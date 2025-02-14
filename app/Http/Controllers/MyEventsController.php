@@ -12,17 +12,17 @@ class MyEventsController extends Controller
     {
         $user=Auth::user();
         $userid=$user->id;
-        $data=Event::where('user_id','=',$userid)->get();
+        $event=Event::where('user_id','=',$userid)->get();
 
         $events = Event::all();
-        return view('myevents.index',compact('data'));
+        return view('myevents.index',compact('events'));
     }
-    public function delete($id)
+    public function destroy($id)
     {
         $event = Event::find($id);
 
         $event->delete();
 
-        return redirect()->back();
+        return redirect()->route('myevents.index');
     }
 }
