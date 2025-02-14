@@ -23,11 +23,11 @@
                         </div>
                         <div>
                             <label for="">Esemeny datuma</label>
-                            <input type="text" name="eventdate" placeholder="Esemeny datuma">
+                            <input type="text" name="eventdate" placeholder="Pl.: 2025-06-07">
                         </div>
                         <div>
                             <label for="">Esemeny idopontja</label>
-                            <input type="text" name="eventtime" placeholder="Esemeny idopontja">
+                            <input type="text" name="eventtime" placeholder="Pl.: 19:00">
                         </div>
                         <div>
                             <label for="">Esemeny korhatara</label>
