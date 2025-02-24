@@ -13,6 +13,7 @@ class Event extends Model
         'eventdesc',
         'eventdate',
         'eventtime',
+        'counties_id',
         'eventplace',
         'eventage',
         'image',
@@ -20,5 +21,8 @@ class Event extends Model
     ];
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function counties(){
+        return $this->belongsTo(County::class);
     }
 }

@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('counties', function (Blueprint $table) {
             $table->id();
-            $table->string('eventname');
-            $table->string('eventdesc')->nullable(true);
-            $table->date('eventdate');
-            $table->time('eventtime');
-            $table->string('eventplace');
-            $table->integer('eventage')->nullable(true);
+            $table->string('county');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('counties');
     }
 };

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
+use App\Models\County;
 use Illuminate\Http\Request;
 
 
@@ -17,7 +18,18 @@ class EventController extends Controller
     }
     public function create()
     {
-        return view("events.create");
+        $counties = County::all();
+        return view("events.create", compact('counties'));
+    }    
+    public function search(Request $request)
+    {
+        $search = $request->query('search');
+        if ($search) {
+            $events = Event::where('eventname', 'LIKE', "%{$search}%")->get();
+        } else {
+            $events = Event::all();
+        }
+        return view('events.index', compact('events'));
     }
     public function store(Request $request)
     {
@@ -29,11 +41,11 @@ class EventController extends Controller
             'eventdesc' => 'required|string',
             'eventdate' => 'required|date',
             'eventtime' => 'required|date_format:H:i',
+            'counties_id' => 'required',
             'eventplace'=> 'required|string',
             'eventage' => 'required|integer',
             'image'=> 'nullable|mimes:png,jpg,jpeg',
         ]);
-
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();

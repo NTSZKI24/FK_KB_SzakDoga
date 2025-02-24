@@ -3,6 +3,10 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Esemenyek') }}
         </h2>
+        <form method="GET" action="{{ route('events.search') }}" class="mt-4">
+            <input type="text" name="search" placeholder="Search events" class="px-4 py-2 border rounded-md">
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Search</button>
+        </form>
     </x-slot>
 
     <div class="py-12">

@@ -34,6 +34,14 @@
                             <input type="text" name="eventage" placeholder="Esemeny korhatara">
                         </div>
                         <div>
+                            <label for="county_id">Megye</label>
+                            <select name="counties_id">
+                                @foreach($counties as $county)
+                                    <option value="{{ $county->id }}">{{ $county->county }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
                             <label for="">Esemeny helyszine</label>
                             <input type="text" name="eventplace" placeholder="Esemeny helyszine">
                         </div>
