@@ -12,9 +12,8 @@ class MyEventsController extends Controller
     {
         $user=Auth::user();
         $userid=$user->id;
-        $event=Event::where('user_id','=',$userid)->get();
+        $events=Event::where('user_id','=',$userid)->get();
 
-        $events = Event::all();
         return view('myevents.index',compact('events'));
     }
     public function destroy($id)
@@ -24,5 +23,23 @@ class MyEventsController extends Controller
         $event->delete();
 
         return redirect()->route('myevents.index');
+    }
+    public function edit($id){
+        $event = Event::find($id);
+        return view('myevents.edit',compact('event'));
+    }
+    public function update(Request $request,$id){
+        $data = new Event;
+        $data = Event::find($id);
+
+        $data->eventname=$request->eventname;
+        $data->eventdesc=$request->eventdesc;
+        $data->eventdate=$request->eventdate;
+        $data->eventtime=$request->eventtime;
+        $data->eventage=$request->eventage;
+
+        $data->save();
+         return redirect()->back();
+
     }
 }

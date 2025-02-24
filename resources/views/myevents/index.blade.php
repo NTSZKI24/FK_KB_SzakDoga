@@ -15,6 +15,9 @@
                         @csrf
                         <button type="submit">delete</button>
                     </form>
+                     <form action="{{route('myevents.edit',$event->id)}}" method="GET">
+                        <button href="">edit</button>
+                    </form>
                 </div>
                 @endforeach
             </div>
