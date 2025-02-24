@@ -13,6 +13,7 @@ class Event extends Model
         'eventdesc',
         'eventdate',
         'eventtime',
+        'eventplace',
         'eventage',
         'image',
         'user_id'

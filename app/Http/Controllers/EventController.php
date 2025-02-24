@@ -21,11 +21,15 @@ class EventController extends Controller
     }
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $data = $request->validate([
             'eventname' => 'required|string|max:255',
             'eventdesc' => 'required|string',
             'eventdate' => 'required|date',
             'eventtime' => 'required|date_format:H:i',
+            'eventplace'=> 'required|string',
             'eventage' => 'required|integer',
             'image'=> 'nullable|mimes:png,jpg,jpeg',
         ]);

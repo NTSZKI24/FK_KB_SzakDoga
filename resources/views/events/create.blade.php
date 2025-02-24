@@ -34,8 +34,12 @@
                             <input type="text" name="eventage" placeholder="Esemeny korhatara">
                         </div>
                         <div>
+                            <label for="">Esemeny helyszine</label>
+                            <input type="text" name="eventplace" placeholder="Esemeny helyszine">
+                        </div>
+                        <div>
                             <label for="">Fenykep feltoltese</label>
-                            <input type="file" name="image" placeholder="Esemeny korhatara">
+                            <input type="file" name="image">
                         </div>
                         <div>
                             <input type="submit" value="Hozd letre az Esemenyt">
