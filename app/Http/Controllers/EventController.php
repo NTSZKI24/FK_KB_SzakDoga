@@ -22,12 +22,23 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'eventname' => '',
-            'eventdesc' => '',
-            'eventdate' => '',
-            'eventtime' => '',
-            'eventage' => '',
+            'eventname' => 'required|string|max:255',
+            'eventdesc' => 'required|string',
+            'eventdate' => 'required|date',
+            'eventtime' => 'required|date_format:H:i',
+            'eventage' => 'required|integer',
+            'image'=> 'nullable|mimes:png,jpg,jpeg',
         ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $path = 'uploads/events/';
+            $file->move($path, $filename);
+            $data['image'] = $path . $filename;
+        }
+
         $data['user_id'] = Auth::id();
         $newEvent = Event::create($data);
         return redirect()->route('events.index');

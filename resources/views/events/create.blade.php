@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <H1>Hozz letre egy Esemenyt</H1>
-                    <form method="post" action="{{route('events.store')}}">
+                    <form method="post" action="{{route('events.store')}}" enctype="multipart/form-data">
                         @csrf
                         @method('post')
                         <div>
@@ -32,6 +32,10 @@
                         <div>
                             <label for="">Esemeny korhatara</label>
                             <input type="text" name="eventage" placeholder="Esemeny korhatara">
+                        </div>
+                        <div>
+                            <label for="">Fenykep feltoltese</label>
+                            <input type="file" name="image" placeholder="Esemeny korhatara">
                         </div>
                         <div>
                             <input type="submit" value="Hozd letre az Esemenyt">

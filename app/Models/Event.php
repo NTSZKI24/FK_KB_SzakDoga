@@ -14,6 +14,7 @@ class Event extends Model
         'eventdate',
         'eventtime',
         'eventage',
+        'image',
         'user_id'
     ];
     public function user(){
