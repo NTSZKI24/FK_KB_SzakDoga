@@ -9,18 +9,19 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @foreach ( $events as $event )
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ asset($event->image) }}" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $event->eventname }}</h5>
-                                <p class="card-text">{{ $event->eventdesc }}</p>
-                                <p class="card-text">{{ $event->eventdate }} {{$event->eventtime}}</p>
-                                <p class="card-text">{{ $event->eventplace }}</p>
-                                <p class="card-text">{{ $event->eventage }}</p>
-                            </div>
-                        </div>
-                    @endforeach
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        @foreach ($events as $event)
+                            <x-card 
+                                :image="asset($event->image)"
+                                :title="$event->eventname"
+                                :description="$event->eventdesc"
+                                :date="$event->eventdate"
+                                :time="$event->eventtime"
+                                :place="$event->eventplace"
+                                :age="$event->eventage"
+                            />
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
