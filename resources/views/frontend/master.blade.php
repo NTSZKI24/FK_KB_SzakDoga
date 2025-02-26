@@ -72,6 +72,10 @@
             background-color: #f8f9fa;
             color:rgb(255, 30, 0);
         }
+        .single-list-topics-icon img {
+            width: 75px; /* Set the desired width */
+            height: 75px; /* Set the desired height */
+        }
     </style>
 </head>
 
@@ -173,9 +177,9 @@
     <section id="home" class="welcome-hero">
         <div class="container">
             <div class="welcome-hero-txt">
-                <h2>best place to find and explore <br> that all you need </h2>
+                <h2>Fedezd fel az eseményeket,és formáld meg a következő nagy kalandot<br>te magad! </h2>
                 <p>
-                    Find Best Place, Restaurant, Hotel, Real State and many more think in just One click 
+                    Találd meg a legjobb eseményeket, programokat, rendezvényeket és még sok mást – mindezt egyetlen kattintással! 
                 </p>
             </div>
             <div class="welcome-hero-serch-box">
@@ -201,45 +205,45 @@
                     <li>
                         <div class="single-list-topics-content">
                             <div class="single-list-topics-icon">
-                                <i class="flaticon-restaurant"></i>
+                                <img src="{{ asset('assets/images/flaticon/dumbbel.png') }}" alt="">
                             </div>
-                            <h2><a href="#">resturent</a></h2>
+                            <h2><a href="#">Sport</a></h2>
                             <p>150 listings</p>
                         </div>
                     </li>
                     <li>
                         <div class="single-list-topics-content">
                             <div class="single-list-topics-icon">
-                                <i class="flaticon-travel"></i>
+                                <img src="{{ asset('assets/images/flaticon/charity.png') }}" alt="">
                             </div>
-                            <h2><a href="#">destination</a></h2>
+                            <h2><a href="#">Osszetartas</a></h2>
                             <p>214 listings</p>
                         </div>
                     </li>
                     <li>
                         <div class="single-list-topics-content">
                             <div class="single-list-topics-icon">
-                                <i class="flaticon-building"></i>
+                                <img src="{{ asset('assets/images/flaticon/confetti.png') }}" alt="">
                             </div>
-                            <h2><a href="#">hotels</a></h2>
+                            <h2><a href="#">Szorakozas</a></h2>
                             <p>185 listings</p>
                         </div>
                     </li>
                     <li>
                         <div class="single-list-topics-content">
                             <div class="single-list-topics-icon">
-                                <i class="flaticon-pills"></i>
+                                <img src="{{ asset('assets/images/flaticon/worldwide.png') }}" alt="">
                             </div>
-                            <h2><a href="#">healthcaree</a></h2>
+                            <h2><a href="#">Kulturalis</a></h2>
                             <p>200 listings</p>
                         </div>
                     </li>
                     <li>
                         <div class="single-list-topics-content">
                             <div class="single-list-topics-icon">
-                                <i class="flaticon-transport"></i>
+                                <img src="{{ asset('assets/images/flaticon/scholarship.png') }}" alt="">
                             </div>
-                            <h2><a href="#">automotion</a></h2>
+                            <h2><a href="#">Tanulmanyi</a></h2>
                             <p>120 listings</p>
                         </div>
                     </li>
@@ -251,8 +255,7 @@
     <!--list-topics end-->
 
 
-
-    <!--explore start -->
+    <!--explore start -->    
     <section id="explore" class="explore">
         <div class="container">
             <div class="section-header">
@@ -305,7 +308,8 @@
             </div>
         </div><!--/.container-->
 
-    </section><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--/.explore-->
     <!--explore end -->

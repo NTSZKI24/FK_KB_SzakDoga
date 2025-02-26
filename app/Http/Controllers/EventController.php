@@ -11,10 +11,19 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::all();
-        return view("events.index", compact("events"));
+        $countyId = $request->query('county',[]);
+        $query = Event::query();
+    
+        if ($countyId) {
+            $query->whereIn('counties_id', $countyId);
+        }
+    
+        $events = $query->get();
+        $counties = County::all();
+    
+        return view('events.index', compact('events', 'counties'));
     }
     public function create()
     {
