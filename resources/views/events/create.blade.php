@@ -1,61 +1,108 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Esemenyek') }}
-        </h2>
-    </x-slot>
+<header>
+    <title>Esemeny letrehozas</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootsnav.css') }}">
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <H1>Hozz letre egy Esemenyt</H1>
-                    <form method="post" action="{{route('events.store')}}" enctype="multipart/form-data">
-                        @csrf
-                        @method('post')
-                        <div>
-                            <label for="">Esemeny neve</label>
-                            <input type="text" name="eventname" placeholder="Esemeny neve">
-                        </div>
-                        <div>
-                            <label for="">Esemeny leirasa</label>
-                            <input type="text" name="eventdesc" placeholder="Esemeny leirasa">
-                        </div>
-                        <div>
-                            <label for="">Esemeny datuma</label>
-                            <input type="text" name="eventdate" placeholder="Pl.: 2025-06-07">
-                        </div>
-                        <div>
-                            <label for="">Esemeny idopontja</label>
-                            <input type="text" name="eventtime" placeholder="Pl.: 19:00">
-                        </div>
-                        <div>
-                            <label for="">Esemeny korhatara</label>
-                            <input type="text" name="eventage" placeholder="Esemeny korhatara">
-                        </div>
-                        <div>
-                            <label for="county_id">Megye</label>
-                            <select name="counties_id">
-                                @foreach($counties as $county)
-                                    <option value="{{ $county->id }}">{{ $county->county }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div>
-                            <label for="">Esemeny helyszine</label>
-                            <input type="text" name="eventplace" placeholder="Esemeny helyszine">
-                        </div>
-                        <div>
-                            <label for="">Fenykep feltoltese</label>
-                            <input type="file" name="image">
-                        </div>
-                        <div>
-                            <input type="submit" value="Hozd letre az Esemenyt">
-                        </div>
+</header>
+<section class="top-area">
+    <div class="header-area">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
 
-                    </form>
-                </div>
+            <div class="container">
+
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" :href="route('events.index')">KF<span> Events</span></a>
+
+                </div><!--/.navbar-header-->
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li >
+                            <x-nav-link :href="route('events.index')">
+                                    {{ __('Esemenyek') }}
+                            </x-nav-link>
+                        </li>
+                        <li class="active">
+                            <x-nav-link :href="route('events.create')">
+                                    {{ __('Esemeny letrehozasa') }}
+                            </x-nav-link>
+                        </li>
+                    </ul><!--/.nav -->
+                </div><!-- /.navbar-collapse -->
+
+            </div><!--/.container-->
+        </nav><!--/nav-->
+        <!-- End Navigation -->
+    </div><!--/.header-area-->
+    <div class="clearfix"></div>
+
+</section><!-- /.top-area-->
+<div class="container" id="creationform">
+    <div class="text">
+       Contact us Form
+    </div>
+    <form action="#">
+       <div class="form-row">
+          <div class="input-data">
+             <input type="text" required>
+             <div class="underline"></div>
+             <label for="">Esemeny neve</label>
+          </div>
+          <div class="input-data">
+             <input type="text" required>
+             <div class="underline"></div>
+             <label for="">Esemeny korhatara</label>
+          </div>
+       </div>
+       <div class="form-row">
+          <div class="input-data">
+             <input type="text" required>
+             <div class="underline"></div>
+             <label for="">Esemeny datuma</label>
+          </div>
+          <div class="input-data">
+             <input type="text" required>
+             <div class="underline"></div>
+             <label for="">Esemeny idopontja</label>
+          </div>
+       </div>
+       <div class="form-row">
+        <div class="input-data">
+            <div class="select">
+            <select name="counties_id">
+                @foreach($counties as $county)
+                    <option value="{{ $county->id }}">{{ $county->county }}</option>
+                @endforeach
+            </select>
             </div>
         </div>
+        <div class="input-data">
+                <input type="file" name="image">
+        </div>
+     </div>
+       <div class="form-row">
+       <div class="input-data textarea">
+          <textarea rows="8" cols="80" required></textarea>
+          <br />
+          <div class="underline"></div>
+          <label for="">Esemeny leirasa</label>
+          <br />
+          <div class="form-row submit-btn">
+             <div class="input-data">
+                <div class="inner"></div>
+                <input type="submit" value="submit">
+             </div>
+          </div>
+    </form>
     </div>
-</x-app-layout>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::get('/events', [EventController::class,'index'])->name('events.index');
-Route::get('/events/create',[EventController::class,'create'])->name('events.create');
+Route::get('/events/create',[EventController::class,'create'])->name('events.create')->middleware('auth');
 Route::post('/events',[EventController::class,'store'])->name('events.store');
 Route::get('/events/search', [EventController::class, 'search'])->name('events.search');
 

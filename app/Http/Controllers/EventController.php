@@ -18,6 +18,7 @@ class EventController extends Controller
     }
     public function create()
     {
+        
         $counties = County::all();
         return view("events.create", compact('counties'));
     }    
