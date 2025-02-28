@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\County;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,8 @@ class MyEventsController extends Controller
     }
     public function edit($id){
         $event = Event::find($id);
-        return view('myevents.edit',compact('event'));
+        $counties = County::all();
+        return view('myevents.edit',compact('event','counties'));
     }
     public function update(Request $request,$id){
         $data = new Event;
@@ -36,6 +38,9 @@ class MyEventsController extends Controller
         $data->eventdesc=$request->eventdesc;
         $data->eventdate=$request->eventdate;
         $data->eventtime=$request->eventtime;
+        $data->eventplace=$request->eventplace;
+        $data->counties_id=$request->counties_id;
+        $data->image=$request->image;
         $data->eventage=$request->eventage;
 
         $data->save();

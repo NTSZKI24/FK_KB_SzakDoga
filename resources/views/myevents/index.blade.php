@@ -63,7 +63,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" :href="route('events.index')">KF<span> Events</span></a>
+                    <a class="navbar-brand" :href="{{ route('events.index') }}">KF<span> Events</span></a>
 
                 </div><!--/.navbar-header-->
                 <!-- End Header Navigation -->
@@ -76,13 +76,13 @@
                                     {{ __('Esemenyek') }}
                             </x-nav-link>
                         </li>
-                        <li class="active">
+                        <li>
                             <x-nav-link :href="route('events.create')">
                                     {{ __('Esemeny letrehozasa') }}
                             </x-nav-link>
                         </li>
                         @auth
-                                <li class="dropdown">
+                                <li class="dropdown active">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>

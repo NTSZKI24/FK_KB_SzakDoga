@@ -1,4 +1,5 @@
 <header>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Esemeny letrehozas</title>
     <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}">
     <!--font-awesome.min.css-->
@@ -42,7 +43,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" :href="route('events.index')">KF<span> Events</span></a>
+                    <a class="navbar-brand" :href="{{ route('events.index') }}">KF<span> Events</span></a>
 
                 </div><!--/.navbar-header-->
                 <!-- End Header Navigation -->
@@ -113,27 +114,29 @@
     <div class="text">
        Hozz letre egy esemenyt
     </div>
-    <form action="#">
+    <form method="post" action="{{route('events.store')}}" enctype="multipart/form-data">
+        @csrf
+        @method('POST')
        <div class="form-row">
           <div class="input-data">
-             <input type="text" required>
+             <input type="text" name="eventname" required>
              <div class="underline"></div>
              <label for="">Esemeny neve</label>
           </div>
           <div class="input-data">
-             <input type="text" required>
+             <input type="text" name="eventage" required>
              <div class="underline"></div>
              <label for="">Esemeny korhatara</label>
           </div>
        </div>
        <div class="form-row">
           <div class="input-data">
-             <input type="text" required>
+             <input type="text" name="eventdate" required>
              <div class="underline"></div>
              <label for="">Esemeny datuma</label>
           </div>
           <div class="input-data">
-             <input type="text" required>
+             <input type="text" name="eventtime" required>
              <div class="underline"></div>
              <label for="">Esemeny idopontja</label>
           </div>
@@ -143,7 +146,7 @@
             <div class="select">
             <select name="counties_id">
                 @foreach($counties as $county)
-                    <option value="{{ $county->id }}">{{ $county->county }}</option>
+                <option value="{{ $county->id }}">{{ $county->county }}</option>
                 @endforeach
             </select>
             </div>
@@ -152,13 +155,18 @@
                 <input type="file" name="image">
         </div>
      </div>
+     <div class="form-row">
+       <div class="input-data">
+       <input type="text" name="eventplace" required>
+          <div class="underline"></div>
+          <label for="">Esemeny helye</label>
+       </div>
+     </div>
        <div class="form-row">
-       <div class="input-data textarea">
-          <textarea rows="8" cols="80" required></textarea>
-          <br />
+       <div class="input-data">
+       <input type="text" name="eventdesc" required>
           <div class="underline"></div>
           <label for="">Esemeny leirasa</label>
-          <br />
           <div class="form-row submit-btn">
              <div class="input-data">
                 <div class="inner"></div>
