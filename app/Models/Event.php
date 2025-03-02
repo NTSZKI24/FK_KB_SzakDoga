@@ -14,6 +14,7 @@ class Event extends Model
         'eventdate',
         'eventtime',
         'counties_id',
+        'types_id',
         'eventplace',
         'eventage',
         'image',
@@ -22,7 +23,10 @@ class Event extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function counties(){
-        return $this->belongsTo(County::class);
+    public function county(){
+        return $this->belongsTo(County::class, 'counties_id');
+    }
+    public function types(){
+        return $this->belongsTo(Types::class);
     }
 }

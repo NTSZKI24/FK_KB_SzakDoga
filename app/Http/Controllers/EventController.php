@@ -20,10 +20,10 @@ class EventController extends Controller
             $query->whereIn('counties_id', $countyId);
         }
     
-        $events = $query->get();
+        $events = Event::with('county')->get();
         $counties = County::all();
     
-        return view('events.index', compact('events', 'counties'));
+        return view('frontend.master', compact('events', 'counties'));
     }
     public function create()
     {

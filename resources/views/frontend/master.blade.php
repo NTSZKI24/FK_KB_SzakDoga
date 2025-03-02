@@ -275,24 +275,24 @@
                                 </div>
                             </div>
                             <div class="single-explore-txt bg-theme-1">
-                                <h2><a >{{"$event->eventname"}}</a></h2>
+                                <h2><a >{{$event->eventname}}</a></h2>
                                 <p class="explore-rating-price">
-                                    <a >{{"$event->counties_id"}}</a> 
+                                    <a>{{ $event->county->county }}</a>
                                     <span class="explore-price-box">
-                                        <a >{{"$event->eventage"}}+</a>
+                                        <a >{{$event->eventage}}+</a>
                                     </span>
                                      <a>Type</a>
                                 </p>
                                 <div class="explore-person">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <a>Datum:</a><p>{{"$event->eventdate"}} {{"$event->eventtime"}}</p>
+                                            <a>Datum:</a><p>{{$event->eventdate}} {{$event->eventtime}}</p>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a>Helyszin:</a><p>{{"$event->eventplace"}}</p>
+                                            <a>Helyszin:</a><p>{{$event->eventplace}}</p>
                                     </div>
                                     <div class="col-sm-12">
-                                        <a>leiras</a><p>{{"$event->eventdesc"}}</p>
+                                        <a>leiras</a><p>{{$event->eventdesc}}</p>
                                     </div>
                                 </div>
                             </div>

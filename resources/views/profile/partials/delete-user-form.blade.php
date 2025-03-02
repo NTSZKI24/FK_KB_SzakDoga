@@ -14,10 +14,10 @@
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
     >{{ __('Delete Account') }}</x-danger-button>
 
-    <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-        <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+    <x-modal name="confirm-user-deletion" :show="$errors->statusChange->isNotEmpty()" focusable>
+        <form method="post" action="{{ route('profile.changeStatus') }}" class="p-6">
             @csrf
-            @method('delete')
+            @method('patch')
 
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                 {{ __('Are you sure you want to delete your account?') }}
@@ -38,7 +38,7 @@
                     placeholder="{{ __('Password') }}"
                 />
 
-                <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+                <x-input-error :messages="$errors->statusChange->get('password')" class="mt-2" />
             </div>
 
             <div class="mt-6 flex justify-end">

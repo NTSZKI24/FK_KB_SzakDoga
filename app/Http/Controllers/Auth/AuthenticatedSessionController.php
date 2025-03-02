@@ -8,9 +8,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Traits\CheckUserStatus;
 
 class AuthenticatedSessionController extends Controller
 {
+    use CheckUserStatus;
+
     /**
      * Display the login view.
      */
@@ -25,6 +28,8 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
+
+        $this->ensureUserIsActive($request->user());
 
         $request->session()->regenerate();
 

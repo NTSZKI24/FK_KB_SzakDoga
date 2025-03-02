@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use App\Traits\CheckUserStatus;
 
 class LoginRequest extends FormRequest
 {
+    use CheckUserStatus;
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -48,6 +50,8 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ]);
         }
+        $user = Auth::user(); 
+        $this->ensureUserIsActive(Auth::user());
 
         RateLimiter::clear($this->throttleKey());
     }
