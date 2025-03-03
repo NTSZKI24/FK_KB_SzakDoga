@@ -548,7 +548,6 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
         width: 200px;
         background: #fff;
         border: solid 1px #e0e0e0;
-        border-top: solid 5px;
     }
     
     nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li a:hover,

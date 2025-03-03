@@ -29,7 +29,28 @@
     
     <!--responsive.css-->
         <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
-
+        <style>
+        .dropdown-menu a {
+            color: #333;
+            padding: 10px 20px;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f8f9fa;
+            color:rgb(255, 30, 0);
+        }
+        .dropdown-menu form a {
+            color: #333;
+            padding: 10px 20px;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-menu form a:hover {
+            background-color: #f8f9fa;
+            color:rgb(255, 30, 0);
+        }
+    </style>
 </header>
 <section class="top-area">
     <div class="header-area">
@@ -74,6 +95,13 @@
                                         </a>
                                     </form>
                                     </li>
+                                    <li>
+                                        <form action="">
+                                            <a href="{{ route('myevents.index') }}">
+                                                {{ __('Sajat esemenyeim') }}
+                                            </a>
+                                        </form>
+                                        </li>
                                     <li>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf

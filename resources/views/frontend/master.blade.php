@@ -136,6 +136,13 @@
                                         </form>
                                         </li>
                                         <li>
+                                        <form action="">
+                                            <a href="{{ route('myevents.index') }}">
+                                                {{ __('Sajat esemenyeim') }}
+                                            </a>
+                                        </form>
+                                        </li>
+                                        <li>
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
                                                 <a href="{{ route('logout') }}"

@@ -50,6 +50,28 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        .dropdown-menu a {
+            color: #333;
+            padding: 10px 20px;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f8f9fa;
+            color:rgb(255, 30, 0);
+        }
+        .dropdown-menu form a {
+            color: #333;
+            padding: 10px 20px;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-menu form a:hover {
+            background-color: #f8f9fa;
+            color:rgb(255, 30, 0);
+        }
+    </style>
 </head>
 <section class="top-area">
     <div class="header-area">
@@ -91,6 +113,13 @@
                                             <form action="">
                                             <a href="{{ route('profile.edit') }}">
                                                 {{ __('Profile') }}
+                                            </a>
+                                        </form>
+                                        </li>
+                                        <li>
+                                        <form action="">
+                                            <a href="{{ route('myevents.index') }}">
+                                                {{ __('Sajat esemenyeim') }}
                                             </a>
                                         </form>
                                         </li>

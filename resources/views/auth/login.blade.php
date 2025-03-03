@@ -175,10 +175,7 @@ button{
 </head>
 
 <body>
-                
-
-            <!-- top-area Start -->
-    <section class="top-area">
+<section class="top-area">
         <div class="header-area">
             <!-- Start Navigation -->
             <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
@@ -231,6 +228,13 @@ button{
                                         </form>
                                         </li>
                                         <li>
+                                        <form action="">
+                                            <a href="{{ route('myevents.index') }}">
+                                                {{ __('Sajat esemenyeim') }}
+                                            </a>
+                                        </form>
+                                        </li>
+                                        <li>
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
                                                 <a href="{{ route('logout') }}"
@@ -276,12 +280,16 @@ button{
         <h3>Login Here</h3>
 
         <label for="email" :value="__('Email')">Email</label>
-        <input type="text" name="email" :value="old('email')" required autofocus autocomplete="username">
+        <input type="email" name="email" :value="old('email')" required autofocus autocomplete="username">
+        <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
         <label for="password" :value="__('Password')" >Password</label>
         <input type="password" name="password" required autocomplete="current-password">
+        <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
         <button>Log In</button>
     </form>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </html>

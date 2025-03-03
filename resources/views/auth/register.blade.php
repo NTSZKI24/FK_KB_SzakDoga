@@ -175,10 +175,7 @@ button{
 </head>
 
 <body>
-                
-
-            <!-- top-area Start -->
-    <section class="top-area">
+<section class="top-area">
         <div class="header-area">
             <!-- Start Navigation -->
             <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
@@ -227,6 +224,13 @@ button{
                                             <form action="">
                                             <a href="{{ route('profile.edit') }}">
                                                 {{ __('Profile') }}
+                                            </a>
+                                        </form>
+                                        </li>
+                                        <li>
+                                        <form action="">
+                                            <a href="{{ route('myevents.index') }}">
+                                                {{ __('Sajat esemenyeim') }}
                                             </a>
                                         </form>
                                         </li>
@@ -296,4 +300,6 @@ button{
         <button>Register</button>
     </form>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </html>
