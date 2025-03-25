@@ -282,7 +282,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     background: #fff;
     height: 70px;
     border-radius: 3px;
-    width: 85%;
+    width: 100%;
 }
 .single-welcome-hero-form {
     position: relative;
@@ -296,7 +296,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 .single-welcome-hero-form input {
     margin-left: 10px;
     height: 70px;
-    width: 300px;
+    width: 800px;;
     border: 0;
     background: transparent;
 }

@@ -196,7 +196,7 @@ button{
                     <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                             @auth
-                                <li class="active">
+                                <li>
                                 <x-nav-link :href="route('events.index')">
                                         {{ __('Esemenyek') }}
                                 </x-nav-link>
@@ -208,7 +208,7 @@ button{
                             </li>
                             @endauth
                             @guest
-                            <li class="active">
+                            <li>
                                 <x-nav-link :href="route('events.index')">
                                         {{ __('Esemenyek') }}
                                 </x-nav-link>
@@ -253,7 +253,7 @@ button{
                                         {{ __('Login') }}
                                     </x-nav-link>
                                 </li>
-                                <li>
+                                <li class="active">
                                     <x-nav-link :href="route('register')">
                                         {{ __('Register') }}
                                     </x-nav-link>
