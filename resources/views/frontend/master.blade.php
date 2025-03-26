@@ -288,7 +288,7 @@
                                     <span class="explore-price-box">
                                         <a >{{$event->eventage}}+</a>
                                     </span>
-                                     <a>Type</a>
+                                     <a>{{ $event->type->type }}</a>
                                 </p>
                                 <div class="explore-person">
                                     <div class="row">

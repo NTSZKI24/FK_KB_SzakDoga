@@ -26,7 +26,7 @@ class Event extends Model
     public function county(){
         return $this->belongsTo(County::class, 'counties_id');
     }
-    public function types(){
-        return $this->belongsTo(Types::class);
+    public function type(){
+        return $this->belongsTo(Types::class, 'types_id');
     }
 }

@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Types extends Model
 {
-    public function events(){
-        return $this->hasMany(Event::class);
+    protected $fillable = ['type'];
+
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'types_id');
     }
 }

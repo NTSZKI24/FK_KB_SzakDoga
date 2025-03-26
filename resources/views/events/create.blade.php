@@ -195,7 +195,13 @@
             </div>
         </div>
         <div class="input-data">
-                <input type="file" name="image">
+            <div class="select">
+                <select name="types_id">
+                    @foreach($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->type }}</option>
+                    @endforeach
+                </select>
+                </div>
         </div>
      </div>
      <div class="form-row">
@@ -204,12 +210,17 @@
           <div class="underline"></div>
           <label for="">Esemeny helye</label>
        </div>
+       <div class="input-data">
+        <input type="file" name="image">
+     </div>
      </div>
        <div class="form-row">
        <div class="input-data">
        <input type="text" name="eventdesc" required>
           <div class="underline"></div>
           <label for="">Esemeny leirasa</label>
+         </div>
+         </div>
           <div class="form-row submit-btn">
              <div class="input-data">
                 <div class="inner"></div>

@@ -174,11 +174,11 @@
                         <div class="single-explore-txt bg-theme-1">
                             <h2><a >{{"$event->eventname"}}</a></h2>
                             <p class="explore-rating-price">
-                                <a >{{"$event->counties_id"}}</a> 
+                                <a>{{ $event->county->county }}</a>
                                 <span class="explore-price-box">
-                                    <a >{{"$event->eventage"}}+</a>
+                                    <a >{{$event->eventage}}+</a>
                                 </span>
-                                 <a>Type</a>
+                                 <a>{{ $event->type->type }}</a>
                             </p>
                             <div class="explore-person">
                                 <div class="row">

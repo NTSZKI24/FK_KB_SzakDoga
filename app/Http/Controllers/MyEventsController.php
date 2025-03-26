@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\County;
+use App\Models\Types;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
@@ -28,23 +29,43 @@ class MyEventsController extends Controller
     public function edit($id){
         $event = Event::find($id);
         $counties = County::all();
-        return view('myevents.edit',compact('event','counties'));
+        $types = Types::all(); // Add this line
+        
+        return view('myevents.edit', compact('event', 'counties', 'types'));
     }
-    public function update(Request $request,$id){
-        $data = new Event;
-        $data = Event::find($id);
-
-        $data->eventname=$request->eventname;
-        $data->eventdesc=$request->eventdesc;
-        $data->eventdate=$request->eventdate;
-        $data->eventtime=$request->eventtime;
-        $data->eventplace=$request->eventplace;
-        $data->counties_id=$request->counties_id;
-        $data->image=$request->image;
-        $data->eventage=$request->eventage;
-
-        $data->save();
-         return redirect()->back();
-
+    public function update(Request $request, $id)
+    {
+        $event = Event::findOrFail($id);
+        
+        $data = $request->validate([
+            'eventname' => 'required',
+            'eventdesc' => 'required',
+            'eventdate' => 'required',
+            'eventtime' => 'required',
+            'counties_id' => 'required',
+            'types_id' => 'required',
+            'eventplace' => 'required',
+            'eventage' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+        ]);
+    
+        // Handle image update
+        if ($request->hasFile('image')) {
+            // Upload new image
+            $imagePath = $request->file('image')->store('event_images', 'public');
+            $data['image'] = 'storage/' . $imagePath;
+    
+            // Delete old image if exists
+            if ($event->image && file_exists(public_path($event->image))) {
+                unlink(public_path($event->image));
+            }
+        } else {
+            // Keep existing image
+            $data['image'] = $request->current_image;
+        }
+    
+        $event->update($data);
+    
+        return redirect()->route('myevents.index')->with('success', 'Event updated successfully');
     }
 }

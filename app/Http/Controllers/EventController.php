@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
+use App\Models\Types;
 use App\Models\County;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class EventController extends Controller
             $query->whereIn('counties_id', $countyId);
         }
     
-        $events = Event::with('county')->get();
+        $events = Event::with(['county', 'type'])->get();
         $counties = County::all();
     
         return view('frontend.master', compact('events', 'counties'));
@@ -29,7 +30,8 @@ class EventController extends Controller
     {
         
         $counties = County::all();
-        return view("events.create", compact('counties'));
+        $types = Types::all();
+        return view("events.create", compact('counties', 'types'));
     }    
     public function search(Request $request)
     {
@@ -52,6 +54,7 @@ class EventController extends Controller
             'eventdate' => 'required|date',
             'eventtime' => 'required|date_format:H:i',
             'counties_id' => 'required',
+            'types_id' => 'required',
             'eventplace'=> 'required|string',
             'eventage' => 'required|integer',
             'image'=> 'nullable|mimes:png,jpg,jpeg',
