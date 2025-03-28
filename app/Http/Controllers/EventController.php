@@ -16,6 +16,7 @@ class EventController extends Controller
     {
         $countyId = $request->query('county',[]);
         $query = Event::query();
+        $query->whereDate('eventdate', '>=', now()->format('Y-m-d'))->orderBy('eventdate', 'asc');
     
         if ($countyId) {
             $query->whereIn('counties_id', $countyId);

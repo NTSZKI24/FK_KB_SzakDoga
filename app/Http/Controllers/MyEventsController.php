@@ -14,7 +14,7 @@ class MyEventsController extends Controller
     {
         $user=Auth::user();
         $userid=$user->id;
-        $events=Event::where('user_id','=',$userid)->get();
+        $events=Event::where('user_id','=',$userid)->whereDate('eventdate', '>=', now()->format('Y-m-d'))->get();
 
         return view('myevents.index',compact('events'));
     }

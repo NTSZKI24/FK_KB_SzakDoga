@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -10,6 +11,21 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+
+Route::prefix('admin')->group(function () {
+    Route::get('login', [AdminController::class, 'showLoginForm'])
+        ->name('admin.login');
+    
+    Route::post('login', [AdminController::class, 'login']);
+    
+    Route::post('logout', [AdminController::class, 'logout'])
+        ->name('admin.logout')
+        ->middleware('auth:admin');
+        
+    Route::get('dashboard', [AdminController::class, 'dashboard'])
+        ->name('admin.dashboard')
+        ->middleware('auth:admin');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])

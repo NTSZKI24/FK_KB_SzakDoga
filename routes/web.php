@@ -24,5 +24,12 @@ Route::post('/myevents/{id}', [MyEventsController::class,'destroy'])->name('even
 Route::get('/myevents/edit/{id}', [MyEventsController::class,'edit'])->name('myevents.edit');
 Route::post('/myevents/update/{id}', [MyEventsController::class,'update'])->name('myevents.update');
 
+Route::get('admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
+Route::post('admin/login', [AdminController::class, 'login']);
+Route::post('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+Route::middleware('auth:admin')->group(function () {
+    Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+});
 
 require __DIR__.'/auth.php';
