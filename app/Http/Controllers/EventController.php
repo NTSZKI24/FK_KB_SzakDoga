@@ -13,20 +13,18 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     public function index(Request $request)
-    {
-        $countyId = $request->query('county',[]);
-        $query = Event::query();
-        $query->whereDate('eventdate', '>=', now()->format('Y-m-d'))->orderBy('eventdate', 'asc');
-    
-        if ($countyId) {
-            $query->whereIn('counties_id', $countyId);
-        }
-    
-        $events = Event::with(['county', 'type'])->get();
-        $counties = County::all();
-    
-        return view('frontend.master', compact('events', 'counties'));
-    }
+{
+    $query = Event::query()
+        ->with(['county', 'type'])
+        ->whereDate('eventdate', '>=', now()->format('Y-m-d'))
+        ->orderBy('eventdate', 'asc');
+
+    $events = $query->get();
+    $counties = County::all();
+    $types = Types::all();
+
+    return view('frontend.master', compact('events', 'counties', 'types'));
+}
     public function create()
     {
         
@@ -72,5 +70,52 @@ class EventController extends Controller
         $data['user_id'] = Auth::id();
         $newEvent = Event::create($data);
         return redirect()->route('events.index');
+    }
+    public function filter(Request $request)
+    {
+        $query = Event::query()
+            ->with(['county', 'type', 'user'])
+            ->whereDate('eventdate', '>=', now()->format('Y-m-d'))
+            ->orderBy('eventdate', 'asc');
+    
+        // County filter (multiple)
+        if ($request->filled('county')) {
+            $query->whereIn('counties_id', (array)$request->county);
+        }
+    
+        // Type filter (multiple)
+        if ($request->filled('type')) {
+            $query->whereIn('types_id', (array)$request->type);
+        }
+    
+        // Date range filter
+        if ($request->filled('date_from')) {
+            $query->whereDate('eventdate', '>=', $request->date_from);
+        }
+        if ($request->filled('date_to')) {
+            $query->whereDate('eventdate', '<=', $request->date_to);
+        }
+    
+        // Time range filter
+        if ($request->filled('time_from')) {
+            $query->whereTime('eventtime', '>=', $request->time_from);
+        }
+        if ($request->filled('time_to')) {
+            $query->whereTime('eventtime', '<=', $request->time_to);
+        }
+    
+        // Age range filter
+        if ($request->filled('age_from')) {
+            $query->where('eventage', '>=', $request->age_from);
+        }
+        if ($request->filled('age_to')) {
+            $query->where('eventage', '<=', $request->age_to);
+        }
+    
+        $events = $query->get();
+        $counties = County::all();
+        $types = Types::all();
+    
+        return view('frontend.master', compact('events', 'counties', 'types'));
     }
 }

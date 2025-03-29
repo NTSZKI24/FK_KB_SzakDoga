@@ -76,6 +76,162 @@
             width: 75px; /* Set the desired width */
             height: 75px; /* Set the desired height */
         }
+    
+        .page-container {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .sticky-sidebar {
+    position: sticky;
+    top: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.filter-form .form-group {
+    margin-bottom: 12px;
+}
+
+.filter-form label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+    display: block;
+    font-size: 14px;
+}
+
+.checkbox-group {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    background: #fff;
+}
+
+.checkbox-item {
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+.filter-form .form-control {
+    width: 100%;
+    margin-bottom: 6px;
+    height: 32px;
+    padding: 4px 8px;
+    font-size: 13px;
+}
+
+.filter-buttons {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding: 12px 0;
+    border-top: 1px solid #eee;
+}
+
+.filter-buttons .btn {
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+    font-size: 16px;
+}
+
+    .container-fluid {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .sticky-sidebar {
+    position: sticky;
+    top: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.container-fluid {
+    padding: 0 30px;
+}
+
+.single-explore-item {
+    margin-bottom: 30px;
+}
+
+/* Remove if exists */
+.offset-md-1 {
+    margin-left: 0;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-md-4 {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.single-explore-item {
+    height: 100%;
+    margin-bottom: 30px;
+}
+// Add to your existing <style> section
+.checkbox-group {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    background: #fff;
+}
+
+.checkbox-item {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.checkbox-item label {
+    margin: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.checkbox-group::-webkit-scrollbar {
+    width: 8px;
+}
+
+.checkbox-group::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.checkbox-group::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.checkbox-group::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
     </style>
 </head>
 
@@ -257,65 +413,130 @@
                 </ul>
             </div>
         </div><!--/.container-->
-
     </section><!--/.list-topics-->
     <!--list-topics end-->
-
-
-    <!--explore start -->    
     <section id="explore" class="explore">
-        <div class="container">
-            <div class="section-header">
-                <h2>explore</h2>
-                <p>Explore New place, food, culture around the world and many more</p>
-            </div><!--/.section-header-->
-            <div class="explore-content">
-                <div class="row">
-                    @foreach($events as $event)
-                    <div class=" col-md-4 col-sm-6">
-                        <div class="single-explore-item">
-                            <div class="single-explore-img">
-                                <img src="{{ asset($event->image) }}" alt="explore image">
-                                <div class="single-explore-img-info">
-                                    <div class="single-explore-image-icon-box">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Filter sidebar -->
+                <div class="col-md-3">
+                    <div class="welcome-hero-filter sticky-sidebar">
+                        <h4 class="mb-4">Szűrők</h4>
+                        <div class="welcome-hero-filter">
+                            <form method="GET" action="{{ route('events.filter') }}" class="filter-form">
+                                <!-- Replace the existing filter form groups for county and type with this -->
+                                <div class="form-group">
+                                    <label>Vármegye</label>
+                                    <div class="checkbox-group">
+                                        @foreach($counties as $county)
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" 
+                                                    name="county[]" 
+                                                    id="county_{{ $county->id }}"
+                                                    value="{{ $county->id }}" 
+                                                    {{ in_array($county->id, (array)request('county')) ? 'checked' : '' }}>
+                                                <label for="county_{{ $county->id }}">{{ $county->county }}</label>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                            </div>
-                            <div class="single-explore-txt bg-theme-1">
-                                <h2><a >{{$event->eventname}}</a></h2>
-                                <p class="explore-rating-price">
-                                    <a>{{ $event->county->county }}</a>
-                                    <span class="explore-price-box">
-                                        <a >{{$event->eventage}}+</a>
-                                    </span>
-                                     <a>{{ $event->type->type }}</a>
-                                </p>
-                                <div class="explore-person">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <a>Datum:</a><p>{{$event->eventdate}} {{$event->eventtime}}</p>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <a>Helyszin:</a><p>{{$event->eventplace}}</p>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <a>leiras</a><p>{{$event->eventdesc}}</p>
+
+                                <div class="form-group">
+                                    <label>Típus</label>
+                                    <div class="checkbox-group">
+                                        @foreach($types as $type)
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" 
+                                                    name="type[]" 
+                                                    id="type_{{ $type->id }}"
+                                                    value="{{ $type->id }}" 
+                                                    {{ in_array($type->id, (array)request('type')) ? 'checked' : '' }}>
+                                                <label for="type_{{ $type->id }}">{{ $type->type }}</label>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+                
+                                <div class="form-group">
+                                    <label>Dátum között</label>
+                                    <input type="date" name="date_from" class="form-control mb-2" 
+                                           value="{{ request('date_from') }}" placeholder="Kezdő dátum">
+                                    <input type="date" name="date_to" class="form-control" 
+                                           value="{{ request('date_to') }}" placeholder="Végső dátum">
                                 </div>
-                                @endforeach
-                            </div>
+                
+                                <div class="form-group">
+                                    <label>Időpont között</label>
+                                    <input type="time" name="time_from" class="form-control mb-2" 
+                                           value="{{ request('time_from') }}">
+                                    <input type="time" name="time_to" class="form-control" 
+                                           value="{{ request('time_to') }}">
+                                </div>
+                
+                                <div class="form-group">
+                                    <label>Korhatár között</label>
+                                    <input type="number" name="age_from" class="form-control mb-2" 
+                                           placeholder="Minimum" value="{{ request('age_from') }}">
+                                    <input type="number" name="age_to" class="form-control" 
+                                           placeholder="Maximum" value="{{ request('age_to') }}">
+                                </div>
+                
+                                <div class="filter-buttons">
+                                    <button type="submit" class="btn btn-primary w-100 mb-2">Szűrés</button>
+                                    <a href="{{ route('events.index') }}" class="btn btn-secondary w-100">Szűrők törlése</a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+    
+                <!-- Events grid -->
+                <div class="col-md-9">
+                    <div class="row">
+                        @foreach($events as $event)
+                            <div class="col-md-4 col-sm-6">
+                                <div class="single-explore-item">
+                                    <div class="single-explore-img">
+                                        <img src="{{ asset($event->image) }}" alt="explore image">
+                                        <div class="single-explore-img-info">
+                                            <div class="single-explore-image-icon-box">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-explore-txt bg-theme-1">
+                                        <h2><a>{{$event->eventname}}</a></h2>
+                                        <p class="explore-rating-price">
+                                            <a>{{ $event->county->county }}</a>
+                                            <span class="explore-price-box">
+                                                <a>{{$event->eventage}}+</a>
+                                            </span>
+                                            <a>{{ $event->type->type }}</a>
+                                        </p>
+                                        <div class="explore-person">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <a>Datum:</a><p>{{$event->eventdate}} {{$event->eventtime}}</p>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <a>Helyszin:</a><p>{{$event->eventplace}}</p>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <a>Leiras:</a><p>{{$event->eventdesc}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                </div>
             </div>
-        </div><!--/.container-->
-
+        </div>
     </section>
+ 
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!--/.explore-->
