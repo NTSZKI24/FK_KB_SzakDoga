@@ -35,17 +35,18 @@
         <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
         <style>
         .dropdown-menu a {
-            color: #333;
+            color: #859098;
             padding: 10px 20px;
             display: block;
             text-decoration: none;
+            font-family: 'Poppins', sans-serif;
         }
         .dropdown-menu a:hover {
             background-color: #f8f9fa;
             color:rgb(255, 30, 0);
         }
         .dropdown-menu form a {
-            color: #333;
+            color: #859098;
             padding: 10px 20px;
             display: block;
             text-decoration: none;
@@ -54,6 +55,14 @@
             background-color: #f8f9fa;
             color:rgb(255, 30, 0);
         }
+
+.error-message {
+    color: rgb(255, 30, 0);
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
 
     </style>
 </header>
@@ -210,9 +219,13 @@
           <div class="underline"></div>
           <label for="">Esemeny helye</label>
        </div>
+       <label class="file-label">Kép feltöltése</label>
        <div class="input-data">
-        <input type="file" name="image">
-     </div>
+        <input type="file" name="image" accept=".png,.jpg,.jpeg" required>
+        @error('image')
+            <span class="error-message">{{ $message }}</span>
+        @enderror
+    </div>
      </div>
        <div class="form-row">
        <div class="input-data">

@@ -129,7 +129,7 @@ form .form-row .textarea{
     flex: 1;
     padding: 0 1em;
     color: #f3f3f3;
-    background-color: var(--darkgray);
+    background-color: #f5f5f5;
     background-image: none;
     cursor: pointer;
     

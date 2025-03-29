@@ -53,17 +53,18 @@
 
     <style>
         .dropdown-menu a {
-            color: #333;
+            color: #859098;
             padding: 10px 20px;
             display: block;
             text-decoration: none;
+            font-family: 'Poppins', sans-serif;
         }
         .dropdown-menu a:hover {
             background-color: #f8f9fa;
             color:rgb(255, 30, 0);
         }
         .dropdown-menu form a {
-            color: #333;
+            color: #859098;
             padding: 10px 20px;
             display: block;
             text-decoration: none;

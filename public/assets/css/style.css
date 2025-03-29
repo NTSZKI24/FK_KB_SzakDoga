@@ -49,6 +49,8 @@ body{
 	overflow-x:hidden;
 }
 
+
+
 a,a:hover,a:active,a:focus {
 	display:inline-block;
 	text-decoration:none;
@@ -71,6 +73,12 @@ p {
 	font-size:14px;
     line-height: 1.5;
     text-transform: initial;
+}
+.file-label {
+    padding-left: 2rem;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
 }
 img{border:none;max-width:100%; height:auto;}
 ul{
