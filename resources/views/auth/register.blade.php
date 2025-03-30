@@ -198,19 +198,19 @@ button{
                             @auth
                                 <li>
                                 <x-nav-link :href="route('events.index')">
-                                        {{ __('Esemenyek') }}
+                                        {{ __('Események') }}
                                 </x-nav-link>
                             </li>
                             <li>
                                 <x-nav-link :href="route('events.create')">
-                                        {{ __('Esemeny letrehozasa') }}
+                                        {{ __('Esemény létrehozása') }}
                                 </x-nav-link>
                             </li>
                             @endauth
                             @guest
                             <li>
                                 <x-nav-link :href="route('events.index')">
-                                        {{ __('Esemenyek') }}
+                                        {{ __('Események') }}
                                 </x-nav-link>
                             </li>
                             @endguest
@@ -223,14 +223,14 @@ button{
                                         <li>
                                             <form action="">
                                             <a href="{{ route('profile.edit') }}">
-                                                {{ __('Profile') }}
+                                                {{ __('Profil') }}
                                             </a>
                                         </form>
                                         </li>
                                         <li>
                                         <form action="">
                                             <a href="{{ route('myevents.index') }}">
-                                                {{ __('Sajat esemenyeim') }}
+                                                {{ __('Saját eseményeim') }}
                                             </a>
                                         </form>
                                         </li>
@@ -240,7 +240,7 @@ button{
                                                 <a href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                              this.closest('form').submit();">
-                                                    {{ __('Log Out') }}
+                                                    {{ __('Kijelentkezés') }}
                                                 </a>
                                             </form>
                                         </li>
@@ -277,27 +277,27 @@ button{
     </div>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-        <h3>Register Here</h3>
+        <h3>Regisztrálj itt</h3>
 
-        <label for="email" :value="__('Email')">Email</label>
+        <label for="email" :value="__('Email')">E-mail</label>
         <input type="text" name="email" :value="old('email')" required autofocus autocomplete="username">
         <x-input-error :messages="$errors->get('email')"/>
 
-        <label for="name" :value="__('Name')" >Name</label>
+        <label for="name" :value="__('Name')" >Felhasználónév</label>
         <input type="text" name="name" :value="old('name')" required autofocus autocomplete="name">
         <x-input-error :messages="$errors->get('name')"/>
 
-        <label for="password" :value="__('Password')" >Password</label>
+        <label for="password" :value="__('Password')" >Jelszó</label>
         <input type="password" name="password" required autocomplete="new-password">
         <x-input-error :messages="$errors->get('password')"/>
 
-        <label for="password_confirmation" :value="__('Confirm Password')" >Confirm Password</label>
+        <label for="password_confirmation" :value="__('Confirm Password')" >Jelszó megerősítése</label>
         <input type="password" name="password_confirmation" required autocomplete="new-password">
         <x-input-error :messages="$errors->get('password_confirmation')"/>
 
 
 
-        <button>Register</button>
+        <button>Regisztráció</button>
     </form>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -9,19 +9,19 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">Admin Login</div>
+                    <div class="card-header">Admin Bejelentkezés</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('admin.login') }}">
                             @csrf
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
+                                <label for="username" class="form-label">Felhaszáló név</label>
                                 <input type="text" class="form-control" id="username" name="username" required>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
+                                <label for="password" class="form-label">Jelszó</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" class="btn btn-primary">Bejelentkezés</button>
                         </form>
                     </div>
                 </div>

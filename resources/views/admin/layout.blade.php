@@ -20,7 +20,7 @@
               <a class="nav-link" href="{{ route('admin.events.index') }}">Események</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('admin.users.index') }}">Felhasznalok</a>
+              <a class="nav-link" href="{{ route('admin.users.index') }}">Felhaszálók</a>
           </li>
           </ul>
           <ul class="navbar-nav">

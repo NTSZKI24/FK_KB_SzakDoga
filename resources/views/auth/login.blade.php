@@ -198,19 +198,19 @@ button{
                             @auth
                                 <li class="">
                                 <x-nav-link :href="route('events.index')">
-                                        {{ __('Esemenyek') }}
+                                        {{ __('Események') }}
                                 </x-nav-link>
                             </li>
                             <li>
                                 <x-nav-link :href="route('events.create')">
-                                        {{ __('Esemeny letrehozasa') }}
+                                        {{ __('Esemény létrehozása') }}
                                 </x-nav-link>
                             </li>
                             @endauth
                             @guest
                             <li class="">
                                 <x-nav-link :href="route('events.index')">
-                                        {{ __('Esemenyek') }}
+                                        {{ __('Események') }}
                                 </x-nav-link>
                             </li>
                             @endguest
@@ -223,14 +223,14 @@ button{
                                         <li>
                                             <form action="">
                                             <a href="{{ route('profile.edit') }}">
-                                                {{ __('Profile') }}
+                                                {{ __('Profil') }}
                                             </a>
                                         </form>
                                         </li>
                                         <li>
                                         <form action="">
                                             <a href="{{ route('myevents.index') }}">
-                                                {{ __('Sajat esemenyeim') }}
+                                                {{ __('Saját eseményeim') }}
                                             </a>
                                         </form>
                                         </li>
@@ -240,7 +240,7 @@ button{
                                                 <a href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                              this.closest('form').submit();">
-                                                    {{ __('Log Out') }}
+                                                    {{ __('Kijelentkezés') }}
                                                 </a>
                                             </form>
                                         </li>
@@ -250,12 +250,12 @@ button{
                             @guest
                                 <li class="active">
                                     <x-nav-link :href="route('login')">
-                                        {{ __('Login') }}
+                                        {{ __('Bejelentkezés') }}
                                     </x-nav-link>
                                 </li>
                                 <li>
                                     <x-nav-link :href="route('register')">
-                                        {{ __('Register') }}
+                                        {{ __('Regisztráció') }}
                                     </x-nav-link>
                                 </li>
                             @endguest
@@ -277,17 +277,17 @@ button{
     </div>
     <form method="POST" action="{{ route('login') }}">
         @csrf
-        <h3>Login Here</h3>
+        <h3>Jelentkezz be itt</h3>
 
-        <label for="email" :value="__('Email')">Email</label>
+        <label for="email" :value="__('Email')">E-mail</label>
         <input type="email" name="email" :value="old('email')" required autofocus autocomplete="username">
         <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
-        <label for="password" :value="__('Password')" >Password</label>
+        <label for="password" :value="__('Password')" >Jelszó</label>
         <input type="password" name="password" required autocomplete="current-password">
         <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
-        <button>Log In</button>
+        <button>Bejelentkezés</button>
     </form>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

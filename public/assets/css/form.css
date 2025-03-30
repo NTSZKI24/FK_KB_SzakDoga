@@ -85,6 +85,28 @@ form .form-row .textarea{
 .textarea textarea:valid ~ .underline:before{
   transform: scale(1);
 }
+.input-data .underline2{
+  position: absolute;
+  bottom: -50%;
+  height: 2px;
+  width: 100%;
+}
+.input-data .underline2:before{
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 100%;
+  background: #3498db;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.input-data input:focus ~ .underline2:before,
+.input-data input:valid ~ .underline2:before,
+.textarea textarea:focus ~ .underline2:before,
+.textarea textarea:valid ~ .underline2:before{
+  transform: scale(1);
+}
 .submit-btn .input-data{
   overflow: hidden;
   height: 45px!important;

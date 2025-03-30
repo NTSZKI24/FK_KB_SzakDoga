@@ -15,9 +15,9 @@ class EventController extends Controller
     public function index(Request $request)
 {
     $query = Event::query()
-        ->with(['county', 'type'])
-        ->whereDate('eventdate', '>=', now()->format('Y-m-d'))
-        ->orderBy('eventdate', 'asc');
+    ->with(['county', 'type'])
+    ->whereDate('eventdate', '>=', now()->format('Y-m-d'))
+    ->orderBy('eventdate', 'asc');
 
     $events = $query->get();
     $counties = County::all();

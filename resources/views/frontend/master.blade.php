@@ -10,10 +10,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     
     <!-- title of site -->
-    <title>Directory Landing Page</title>
+    <title>Események</title>
 
     <!-- For favicon png -->
-    <link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png"/>
    
     <!--font-awesome.min.css-->
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
@@ -233,6 +232,24 @@
 .checkbox-group::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+.single-explore-img {
+        height: 250px; /* Fixed height for image container */
+        overflow: hidden;
+        position: relative;
+    }
+
+    .single-explore-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* This ensures images cover the area without distortion */
+        object-position: center;
+    }
+
+    /* Optional: Add a transition for smooth hover effects */
+    .single-explore-img img:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
     </style>
 </head>
 
@@ -263,19 +280,19 @@
                             @auth
                                 <li class="active">
                                 <x-nav-link :href="route('events.index')">
-                                        {{ __('Esemenyek') }}
+                                        {{ __('események') }}
                                 </x-nav-link>
                             </li>
                             <li>
                                 <x-nav-link :href="route('events.create')">
-                                        {{ __('Esemeny letrehozasa') }}
+                                        {{ __('esemény letrehozasa') }}
                                 </x-nav-link>
                             </li>
                             @endauth
                             @guest
                             <li class="active">
                                 <x-nav-link :href="route('events.index')">
-                                        {{ __('Esemenyek') }}
+                                        {{ __('események') }}
                                 </x-nav-link>
                             </li>
                             @endguest
@@ -288,14 +305,14 @@
                                         <li>
                                             <form action="">
                                             <a href="{{ route('profile.edit') }}">
-                                                {{ __('Profile') }}
+                                                {{ __('Profil') }}
                                             </a>
                                         </form>
                                         </li>
                                         <li>
                                         <form action="">
                                             <a href="{{ route('myevents.index') }}">
-                                                {{ __('Sajat esemenyeim') }}
+                                                {{ __('Sajat eseményeim') }}
                                             </a>
                                         </form>
                                         </li>
@@ -305,7 +322,7 @@
                                                 <a href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                              this.closest('form').submit();">
-                                                    {{ __('Log Out') }}
+                                                    {{ __('Kijelentkezés') }}
                                                 </a>
                                             </form>
                                         </li>
@@ -315,12 +332,12 @@
                             @guest
                                 <li>
                                     <x-nav-link :href="route('login')">
-                                        {{ __('Login') }}
+                                        {{ __('Bejelentkezés') }}
                                     </x-nav-link>
                                 </li>
                                 <li>
                                     <x-nav-link :href="route('register')">
-                                        {{ __('Register') }}
+                                        {{ __('Regisztráció') }}
                                     </x-nav-link>
                                 </li>
                             @endguest
@@ -349,9 +366,9 @@
             <div class="welcome-hero-serch-box">
                 <div class="welcome-hero-form">
                     <div class="single-welcome-hero-form">
-                        <h3>what?</h3>
+                        <h3>Mit keresel?</h3>
                         <form method="GET" action="{{ route('events.search') }}" class="mt-4">
-                            <input type="text" name="search" placeholder="Search events" class="px-4 py-2 border rounded-md">
+                            <input type="text" name="search" placeholder="'Kosárlabda mérkőzés'" class="px-4 py-2 border rounded-md">
                         </form>
                     </div>
                 </div>
@@ -371,8 +388,8 @@
                             <div class="single-list-topics-icon">
                                 <img src="{{ asset('assets/images/flaticon/dumbbel.png') }}" alt="">
                             </div>
-                            <h2><a href="#">Sport</a></h2>
-                            <p>150 listings</p>
+                            <h2><a href="{{ route('events.filter', ['type' => [1]]) }}">Sport</a></h2>
+                            <p>{{ $events->where('types_id', 1)->count() }} esemény</p>
                         </div>
                     </li>
                     <li>
@@ -380,8 +397,8 @@
                             <div class="single-list-topics-icon">
                                 <img src="{{ asset('assets/images/flaticon/charity.png') }}" alt="">
                             </div>
-                            <h2><a href="#">Osszetartas</a></h2>
-                            <p>214 listings</p>
+                            <h2><a href="{{ route('events.filter', ['type' => [2]]) }}">Összetartás</a></h2>
+                            <p>{{ $events->where('types_id', 2)->count() }} esemény</p>
                         </div>
                     </li>
                     <li>
@@ -389,8 +406,8 @@
                             <div class="single-list-topics-icon">
                                 <img src="{{ asset('assets/images/flaticon/confetti.png') }}" alt="">
                             </div>
-                            <h2><a href="#">Szorakozas</a></h2>
-                            <p>185 listings</p>
+                            <h2><a href="{{ route('events.filter', ['type' => [3]]) }}">Szórakozás</a></h2>
+                            <p>{{ $events->where('types_id', 3)->count() }} esemény</p>
                         </div>
                     </li>
                     <li>
@@ -398,8 +415,8 @@
                             <div class="single-list-topics-icon">
                                 <img src="{{ asset('assets/images/flaticon/worldwide.png') }}" alt="">
                             </div>
-                            <h2><a href="#">Kulturalis</a></h2>
-                            <p>200 listings</p>
+                            <h2><a href="{{ route('events.filter', ['type' => [4]]) }}">Kulturális</a></h2>
+                            <p>{{ $events->where('types_id', 4)->count() }} esemény</p>
                         </div>
                     </li>
                     <li>
@@ -407,25 +424,22 @@
                             <div class="single-list-topics-icon">
                                 <img src="{{ asset('assets/images/flaticon/scholarship.png') }}" alt="">
                             </div>
-                            <h2><a href="#">Tanulmanyi</a></h2>
-                            <p>120 listings</p>
+                            <h2><a href="{{ route('events.filter', ['type' => [5]]) }}">Tanulmányi</a></h2>
+                            <p>{{ $events->where('types_id', 5)->count() }} esemény</p>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div><!--/.container-->
-    </section><!--/.list-topics-->
-    <!--list-topics end-->
+        </div>
+    </section>
     <section id="explore" class="explore">
         <div class="container-fluid">
             <div class="row">
-                <!-- Filter sidebar -->
                 <div class="col-md-3">
                     <div class="welcome-hero-filter sticky-sidebar">
                         <h4 class="mb-4">Szűrők</h4>
                         <div class="welcome-hero-filter">
                             <form method="GET" action="{{ route('events.filter') }}" class="filter-form">
-                                <!-- Replace the existing filter form groups for county and type with this -->
                                 <div class="form-group">
                                     <label>Vármegye</label>
                                     <div class="checkbox-group">
@@ -491,7 +505,6 @@
                     </div>
                 </div>
     
-                <!-- Events grid -->
                 <div class="col-md-9">
                     <div class="row">
                         @foreach($events as $event)
@@ -516,13 +529,13 @@
                                         <div class="explore-person">
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <a>Datum:</a><p>{{$event->eventdate}} {{$event->eventtime}}</p>
+                                                    <a>Dátum:</a><p>{{$event->eventdate}} {{$event->eventtime}}</p>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <a>Helyszin:</a><p>{{$event->eventplace}}</p>
+                                                    <a>Helyszín:</a><p>{{$event->eventplace}}</p>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <a>Leiras:</a><p>{{$event->eventdesc}}</p>
+                                                    <a>Leírás:</a><p>{{$event->eventdesc}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -540,7 +553,5 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!--/.explore-->
-    <!--explore end -->
 
 		
