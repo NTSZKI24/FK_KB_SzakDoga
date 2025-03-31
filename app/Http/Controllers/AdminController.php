@@ -100,12 +100,12 @@ public function update(Request $request, $id)
     ]);
 
     if ($request->hasFile('image')) {
-        // Delete old image
+        
         if ($event->image && file_exists(public_path($event->image))) {
             unlink(public_path($event->image));
         }
 
-        // Store new image
+        
         $imagePath = $request->file('image')->store('events', 'public');
         $data['image'] = 'storage/' . $imagePath;
     }
@@ -121,7 +121,7 @@ public function destroy($id)
 {
     $event = Event::findOrFail($id);
 
-    // Delete the image file if it exists
+    
     if ($event->image && file_exists(public_path($event->image))) {
         unlink(public_path($event->image));
     }

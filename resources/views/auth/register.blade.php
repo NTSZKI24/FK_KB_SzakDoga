@@ -250,12 +250,12 @@ button{
                             @guest
                                 <li>
                                     <x-nav-link :href="route('login')">
-                                        {{ __('Login') }}
+                                        {{ __('Bejelentkezés') }}
                                     </x-nav-link>
                                 </li>
                                 <li class="active">
                                     <x-nav-link :href="route('register')">
-                                        {{ __('Register') }}
+                                        {{ __('Regisztráció') }}
                                     </x-nav-link>
                                 </li>
                             @endguest

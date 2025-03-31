@@ -45,7 +45,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/users', [AdminUserController::class, 'store'])->name('admin.users.store');
         Route::get('/users/{id}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
         Route::put('/users/{id}', [AdminUserController::class, 'update'])->name('admin.users.update');
-        Route::delete('/users/{id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+        Route::patch('/admin/users/{user}/toggle-status', [AdminUserController::class, 'toggleStatus'])
+    ->name('admin.users.toggle-status');
     });
 });
 

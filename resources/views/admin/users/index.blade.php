@@ -20,6 +20,7 @@
                             <th>Email</th>
                             <th>Regisztráció dátuma</th>
                             <th>Események száma</th>
+                            <th>Státusz</th>
                             <th>Műveletek</th>
                         </tr>
                     </thead>
@@ -32,22 +33,28 @@
                                 <td>{{ $user->created_at->format('Y-m-d') }}</td>
                                 <td>{{ $user->events->count() }}</td>
                                 <td>
+                                    <span class="badge bg-{{ $user->status ? 'success' : 'danger' }}">
+                                        {{ $user->status ? 'Aktív' : 'Inaktív' }}
+                                    </span>
+                                </td>
+                                <td>
                                     <div class="btn-group">
                                         <a href="{{ route('admin.users.edit', $user->id) }}" 
                                            class="btn btn-outline-primary">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('admin.users.destroy', $user->id) }}" 
-                                              method="POST" 
-                                              class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" 
-                                                    class="btn btn-outline-danger"
-                                                    onclick="return confirm('Biztosan törli ezt a felhasználót?')">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        <form action="{{ route('admin.users.toggle-status', $user->id) }}" 
+                                            method="POST" 
+                                            class="d-inline">
+                                          @csrf
+                                          @method('PATCH')
+                                          <button type="submit" 
+                                                  class="btn btn-{{ $user->status ? 'warning' : 'success' }} btn-sm"
+                                                  onclick="return confirm('Biztosan {{ $user->status ? 'inaktiválja' : 'aktiválja' }} ezt a felhasználót?')">
+                                              <i class="fas fa-{{ $user->status ? 'ban' : 'check' }}"></i>
+                                              {{ $user->status ? 'Inaktiválás' : 'Aktiválás' }}
+                                          </button>
+                                      </form>
                                     </div>
                                 </td>
                             </tr>

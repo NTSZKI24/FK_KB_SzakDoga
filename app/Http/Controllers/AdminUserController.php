@@ -56,14 +56,15 @@ public function store(Request $request)
             ->route('admin.users.index')
             ->with('success', 'Felhasználó sikeresen frissítve.');
     }
-
-    public function destroy($id)
+    public function toggleStatus($id)
     {
         $user = User::findOrFail($id);
-        $user->delete();
+        $user->status = !$user->status;
+        $user->save();
 
+        $status = $user->status ? 'aktiválva' : 'inaktiválva';
         return redirect()
             ->route('admin.users.index')
-            ->with('success', 'Felhasználó sikeresen törölve.');
+            ->with('success', "Felhasználó sikeresen {$status}.");
     }
 }

@@ -29,7 +29,7 @@ class MyEventsController extends Controller
     public function edit($id){
         $event = Event::find($id);
         $counties = County::all();
-        $types = Types::all(); // Add this line
+        $types = Types::all();
         
         return view('myevents.edit', compact('event', 'counties', 'types'));
     }
@@ -49,18 +49,18 @@ class MyEventsController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
     
-        // Handle image update
+        
         if ($request->hasFile('image')) {
-            // Upload new image
+            
             $imagePath = $request->file('image')->store('event_images', 'public');
             $data['image'] = 'storage/' . $imagePath;
     
-            // Delete old image if exists
+            
             if ($event->image && file_exists(public_path($event->image))) {
                 unlink(public_path($event->image));
             }
         } else {
-            // Keep existing image
+            
             $data['image'] = $request->current_image;
         }
     

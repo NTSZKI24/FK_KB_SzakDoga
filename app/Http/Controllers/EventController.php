@@ -78,17 +78,17 @@ class EventController extends Controller
             ->whereDate('eventdate', '>=', now()->format('Y-m-d'))
             ->orderBy('eventdate', 'asc');
     
-        // County filter (multiple)
+        
         if ($request->filled('county')) {
             $query->whereIn('counties_id', (array)$request->county);
         }
     
-        // Type filter (multiple)
+        
         if ($request->filled('type')) {
             $query->whereIn('types_id', (array)$request->type);
         }
     
-        // Date range filter
+        
         if ($request->filled('date_from')) {
             $query->whereDate('eventdate', '>=', $request->date_from);
         }
@@ -96,7 +96,7 @@ class EventController extends Controller
             $query->whereDate('eventdate', '<=', $request->date_to);
         }
     
-        // Time range filter
+        
         if ($request->filled('time_from')) {
             $query->whereTime('eventtime', '>=', $request->time_from);
         }
@@ -104,7 +104,7 @@ class EventController extends Controller
             $query->whereTime('eventtime', '<=', $request->time_to);
         }
     
-        // Age range filter
+        
         if ($request->filled('age_from')) {
             $query->where('eventage', '>=', $request->age_from);
         }
