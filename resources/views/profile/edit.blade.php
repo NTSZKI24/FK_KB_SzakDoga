@@ -296,18 +296,18 @@
             <div class="col-md-8">
                 <div class="card shadow">
                     <div class="card-header text-white">
-                        <h4 class="mb-0">Fiók törlése</h4>
+                        <h4 class="mb-0">Fiók inaktíválása</h4>
                     </div>
                     <div class="card-body">
                         <p class="text-muted mb-4">
-                            A fiók törlése után minden adat véglegesen törlődik. Kérjük, a törlés előtt mentse le az összes szükséges adatot.
+                            A fiók inaktíválása után nem fog tudni bejelentkezni fiókjába.
                         </p>
                         <br>
                         <button type="button" 
                                 class="btn btn-danger" 
                                 data-toggle="modal" 
                                 data-target="#deleteAccountModal">
-                            Fiók törlése
+                            Fiók inaktíválása
                         </button>
     
                         <div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
@@ -325,7 +325,7 @@
                                             @method('patch')
                                             
                                             <p class="text-muted mb-4">
-                                                Kérjük, adja meg jelszavát a fiók végleges törléséhez.
+                                                Kérjük, adja meg jelszavát a fiók végleges inaktíválásahoz.
                                             </p>
     
                                             <div class="form-group">
@@ -346,7 +346,7 @@
                                             Mégse
                                         </button>
                                         <button type="button" class="btn btn-danger" onclick="document.getElementById('deleteAccountForm').submit();">
-                                            Fiók törlése
+                                            Fiók inaktíválása
                                         </button>
                                     </div>
                                 </div>
